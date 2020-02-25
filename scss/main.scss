@@ -144,8 +144,9 @@ body {
 
 .country-modal {
   position: absolute;
+  margin-top: 2rem;
   width: 100%;
-  // height: 100%;
+  height: 100%;
   background-color: $lightgray;
   z-index: 1000;
   display: grid;
@@ -157,13 +158,12 @@ body {
 
 .modal-flag {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .back-btn {
   background-color: $white;
-  padding: 10px 1.5rem;
+  padding: 10px 1.5rem 10px 2.5rem;
+  margin-bottom: 5rem;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
@@ -189,3 +189,30 @@ body {
 .modal-open {
   display: none;
 }
+
+.border-countries {
+  display: flex;
+  flex-wrap: wrap;
+
+  .borders-title {
+    flex-basis: 100%;
+    margin: 1em 0;
+    font-size: 1rem;
+  }
+
+  .border-country {
+    background-color: $white;
+    border: none;
+    box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.1);
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .border-country:not(:last-child) {
+    margin-right: 1rem;
+    // flex-grow: 1;
+  }
+}
+// Responsive Styles
+@import "desktop";

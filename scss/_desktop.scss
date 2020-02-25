@@ -1,0 +1,61 @@
+@mixin desktop($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+.search-items {
+  @include desktop(500px) {
+    margin: 2rem auto;
+    max-width: 1200px;
+    flex-wrap: nowrap;
+
+    #search-box {
+      flex-basis: 50%;
+    }
+
+    .region-filter,
+    .filter {
+      margin: 0;
+    }
+  }
+}
+
+.country-modal {
+  @include desktop(768px) {
+    grid-template-columns: 1fr 1fr;
+    // grid-template-rows: ;
+    column-gap: 5rem;
+    align-items: center;
+
+    .back-btn {
+      grid-column: 1 / -1;
+      justify-self: left;
+      margin-bottom: 8rem;
+    }
+    .modal-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .country-name {
+      grid-column: 1 / -1;
+    }
+
+    .primary-details {
+      grid-column: auto / span 1;
+    }
+    .other-details {
+      grid-column: span 1 / -1;
+    }
+
+    .border-countries {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.border-countries {
+  @include desktop(768px) {
+    display: block;
+  }
+}

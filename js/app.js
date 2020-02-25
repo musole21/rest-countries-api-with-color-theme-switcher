@@ -85,18 +85,23 @@ const createModal = event => {
         <button class="back-btn">Back</button>
         <img src="${flag}" class="modal-flag">
         <div class="modal-details">
-          <h2 class="country-name prop">${name}</h2>
-          <p class="prop">Native Name: <span class="value">${nativeName}</span></p>
-          <p class="prop">Population: <span class="value">${population}</span></p>
-          <p class="prop">Region: <span class="value">${region}</span></p>
-          <p class="prop">Sub-region: <span class="value">${subregion}</span></p>
-          <p class="prop">Capital: <span class="value">${capital}</span></p>
-          <p class="prop">Top Level Domain: <span class="value">${topLevelDomain[0]}</span></p>
-          <p class="prop">Currency: <span class="value">${currencies[0].name}</span></p>
-          <p class="prop">Languages: <span class="value">${languages[0].name}</span></p>
+        <h2 class="country-name prop">${name}</h2>
+        <div class="primary-details">
+            <p class="prop">Native Name: <span class="value">${nativeName}</span></p>
+            <p class="prop">Population: <span class="value">${population}</span></p>
+            <p class="prop">Region: <span class="value">${region}</span></p>
+            <p class="prop">Sub-region: <span class="value">${subregion}</span></p>
+            <p class="prop">Capital: <span class="value">${capital}</span></p>
         </div>
-        <div class="border-countries">
-          <h3 class="borders-title">Border Countries</h3>
+          <div class="other-details">
+            <p class="prop">Top Level Domain: <span class="value">${topLevelDomain[0]}</span></p>
+            <p class="prop">Currency: <span class="value">${currencies[0].name}</span></p>
+            <p class="prop">Languages: <span class="value">${languages[0].name}</span></p>
+          </div>
+
+          <div class="border-countries">
+            <h3 class="borders-title">Border Countries</h3>
+          </div>
         </div>
       </div>
   `;
@@ -152,6 +157,7 @@ const filterCountries = event => {
 };
 
 searchBox.addEventListener("keyup", filterCountries);
+
 // filter by region
 const regionBtn = document.querySelector(".region-filter");
 const filter = document.querySelector(".filter");
@@ -170,10 +176,10 @@ regionBtn.addEventListener("click", event => {
         name.parentElement.parentElement.parentElement.style.display = "grid";
         filter.textContent = name.textContent;
         filter.style.display = "inline-block";
-        regionBtn.firstElementChild.classList.add("closed");
+        regionBtn.firstElementChild.classList.toggle("closed");
       } else {
         name.parentElement.parentElement.parentElement.style.display = "none";
-        regionBtn.firstElementChild.classList.add("closed");
+        regionBtn.firstElementChild.classList.toggle("closed");
       }
     });
   }
