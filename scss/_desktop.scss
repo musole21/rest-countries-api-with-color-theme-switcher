@@ -21,6 +21,12 @@
   }
 }
 
+.countries {
+  @include desktop(768px) {
+    max-width: 1440px;
+  }
+}
+
 .country-modal {
   @include desktop(768px) {
     grid-template-columns: 1fr 1fr;

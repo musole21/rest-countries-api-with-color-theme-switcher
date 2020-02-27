@@ -7,24 +7,20 @@ const displayCountryCards = async data => {
   let temp = "";
   data.forEach(({ name, population, region, capital }) => {
     temp += `
-    <div class="country">
-      <img src="" class="flag" />
-      <div class="details">
-      <h2 class="country-name">${name}</h2>
-          <p><span class="prop-name">Population</span>: ${population}</p>
-          <p>Region: <span class="region-name">${region}</span></p>
-          <p><span class="prop-name">Capital</span>: ${capital}</p>
+      <div class="country">
+        <img src="" class="flag" />
+        <div class="details">
+        <h2 class="country-name">${name}</h2>
+            <p><span class="prop-name">Population</span>: ${population}</p>
+            <p>Region: <span class="region-name">${region}</span></p>
+            <p><span class="prop-name">Capital</span>: ${capital}</p>
+        </div>
       </div>
-      </div>`;
+    `;
   });
 
   container.innerHTML = temp;
   container.style.display = "grid";
-};
-
-const fetchFlag = async ({ flag }) => {
-  const res = await fetch(flag);
-  return res.blob();
 };
 
 const fetchCountryData = async () => {
@@ -33,15 +29,11 @@ const fetchCountryData = async () => {
 
   displayCountryCards(countryData);
 
-  const blobs = countryData.map(itm => {
-    return fetchFlag(itm);
-  });
-
-  const imgblobs = await Promise.all(blobs);
   const countryCards = document.querySelectorAll(".flag");
   for (let i = 0; i < countryData.length; i++) {
-    const imgUrl = URL.createObjectURL(imgblobs[i]);
-    countryCards[i].setAttribute("src", imgUrl);
+    // const res = fetch(countryData[i].flag);
+    // const blob = res.blob();
+    countryCards[i].src = countryData[i].flag;
   }
 };
 
@@ -52,7 +44,7 @@ fetchCountryData();
 //display modal
 const createModal = event => {
   let elClicked = event.target;
-
+  console.log(elClicked);
   if (
     elClicked.classList.contains("country") ||
     elClicked.classList.contains("border-country")
@@ -124,7 +116,10 @@ const createModal = event => {
     });
   }
 };
-
+const countryCards = document.querySelectorAll(".country");
+countryCards.forEach(country => {
+  country.addEventListener("click", createModal);
+});
 container.addEventListener("click", createModal);
 
 //hide modal

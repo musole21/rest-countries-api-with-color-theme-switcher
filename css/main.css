@@ -19,17 +19,19 @@ body {
 .main-header {
   background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 1rem 10px;
+  padding: 1rem 1em;
 }
 
 .main-header .header-title {
-  font-size: 1.15rem;
+  font-size: 0.85rem;
   font-weight: 900;
 }
 
 .main-header .dark-mode {
+  font-size: 0.85rem;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 .main-header .container {
@@ -39,7 +41,7 @@ body {
 
 .search-items {
   margin: 2rem 0;
-  padding: 0 10px;
+  padding: 0 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -50,7 +52,7 @@ body {
 .search-items .filter {
   background-color: white;
   border: none;
-  padding: 1em 2rem;
+  padding: 1em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -91,10 +93,10 @@ body {
 }
 
 .countries {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 768px;
+  padding: 0 1em;
   display: none;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 260px));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 250px));
   justify-content: center;
   gap: 3rem;
   position: relative;
@@ -137,6 +139,11 @@ body {
   line-height: 1.4;
 }
 
+.modal-toggle {
+  background: none;
+  border: none;
+}
+
 .country-modal {
   position: absolute;
   margin-top: 2rem;
@@ -146,13 +153,14 @@ body {
   z-index: 1000;
   display: grid;
   grid-template-rows: auto 250px auto;
-  grid-template-columns: 400px;
+  grid-template-columns: 300px;
   justify-content: center;
-  gap: 1.5rem;
+  padding: 0 5%;
 }
 
 .modal-flag {
   width: 100%;
+  object-fit: cover;
 }
 
 .back-btn {
@@ -167,8 +175,8 @@ body {
 }
 
 .modal-details .country-name {
-  font-size: 1.35rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.12rem;
 }
 
 .modal-details .prop:not(:last-child) {
@@ -191,7 +199,7 @@ body {
 .border-countries .borders-title {
   flex-basis: 100%;
   margin: 1em 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .border-countries .border-country {
@@ -219,6 +227,12 @@ body {
   .search-items .region-filter,
   .search-items .filter {
     margin: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .countries {
+    max-width: 1440px;
   }
 }
 
